@@ -26,3 +26,11 @@ exports.showReservation = function(req,res){
 exports.showBlog = function(req,res){
 	res.render('blog');
 }
+
+exports.showAdminHomePage = function(req,res){
+	res.render('adminHomePage');
+}
+
+exports.showNewOrderPage = function (req,res){
+	res.render('newOrder');
+}

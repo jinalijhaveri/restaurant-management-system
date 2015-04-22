@@ -18,8 +18,9 @@ var connection;
 				  user     : 'root',
 				  password : 'welcome',
 				  port : '3306',
-				  database : 'freedoor'
+				  database : 'restaurantdb'
 				});
+			console.log("Pool_______"+pool);
 			return pool;
 		}
 	}

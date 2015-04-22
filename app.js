@@ -8,6 +8,9 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 
+var category = require('./routes/category');
+var menu = require('./routes/menu');
+
 var app = express();
 
 // all environments
@@ -33,6 +36,11 @@ app.get('/menu',routes.showMenu);
 app.get('/contacts',routes.showContacts);
 app.get('/reservation',routes.showReservation);
 app.get('/blog',routes.showBlog);
+app.get('/adminHome',routes.showAdminHomePage);
+app.get('/createOrder',routes.showNewOrderPage);
+
+app.get('/categories',category.getCategories);
+app.get('/category/:categoryId',menu.getMenuByCategory);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
