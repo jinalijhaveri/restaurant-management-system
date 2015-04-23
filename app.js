@@ -41,6 +41,9 @@ app.get('/createOrder',routes.showNewOrderPage);
 
 app.get('/categories',category.getCategories);
 app.get('/category/:categoryId',menu.getMenuByCategory);
+app.get('/addCategory',routes.showAddCategory);
+app.get('/addMenu',routes.showAddMenu);
+app.get('/addInCategory',category.addInCategory);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
