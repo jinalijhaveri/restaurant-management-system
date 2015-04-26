@@ -40,4 +40,4 @@ exports.getCategories = function(callback){
 			});
 	});
 
-
+}
