@@ -14,6 +14,8 @@ exports.getMenuByCategory = function(req,res){
 }
 
 exports.addMenuItem = function(req, res) {
+	
+	console.log("Inside Add Menu Item");
 	var itemName = req.body.itemName;
 	var price = req.body.price;
 	var categoryId = req.body.categoryId;
@@ -26,7 +28,8 @@ exports.addMenuItem = function(req, res) {
 			res.end("Error while inserting data\n");
 		} else {
 			console.log(rows);
-			res.end("Menu Item Inserted");
+			console.log("Menu Item Inserted");
+			res.render('adminHomePage');
 		}
 	});
 };
@@ -45,7 +48,8 @@ exports.updateMenuItem = function(req, res) {
 			res.end("Error while updating data\n");
 		} else {
 			console.log(rows);
-			res.end("Menu Item Updated");
+			console.log("Menu Item Updated");
+			res.render('adminMenuPage');
 		}
 	});
 };
@@ -65,4 +69,18 @@ exports.deleteMenuItem = function(req, res) {
 	});
 }
 
+exports.showAdminMenuPage = function(req,res){
+	menu.getMenuItems(function(err,rows){
+		console.log("Items______"+rows);
+		res.render('adminMenuPage',{itemList:rows});
+	});
+}
+
+exports.showAdminEditMenuPage = function(req,res){
+	var itemId = req.params.itemId;
+	menu.getMenuDetails(itemId,function(err,rows){
+		console.log("Items______"+rows);
+		res.render('adminEditMenu',{item:rows});
+	});
+}
 

@@ -34,6 +34,9 @@ exports.showAdminHomePage = function(req,res){
 exports.showNewOrderPage = function (req,res){
 	res.render('newOrder');
 };
+
+
+
 exports.showAddCategory = function (req,res){
 	res.render('addCategory');
 };

@@ -40,6 +40,8 @@ app.get('/adminHome',routes.showAdminHomePage);
 app.get('/createOrder',routes.showNewOrderPage);
 app.get('/addCategory',routes.showAddCategory);
 app.get('/addMenu',routes.showAddMenu);
+app.get('/showAdminMenu',menu.showAdminMenuPage);
+app.get('/showAdminEditMenu/:itemId',menu.showAdminEditMenuPage);
 
 
 app.get('/categories',category.getCategories);
@@ -49,7 +51,7 @@ app.post('/deleteCategory',category.deleteCategory);
 
 app.get('/category/:categoryId',menu.getMenuByCategory);
 app.post('/menuItem',menu.addMenuItem);
-app.put('/menuItem',menu.updateMenuItem);
+app.post('/updateMenuItem',menu.updateMenuItem);
 app.post('/deleteMenuItem',menu.deleteMenuItem);
 
 

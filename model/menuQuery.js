@@ -23,6 +23,42 @@ exports.getMenuItemsByCategory = function(categoryId,callback){
 	});
 }
 
+exports.getMenuDetails = function(itemId,callback){
+	var sql = 'select * from item where item_Id ='+itemId;
+	pool.getConnection(function(err, conn) {
+		conn.query(sql,function(err,results){
+			
+			if (err) {
+		        console.log("ERROR: " + err.message);
+		        pool.releaseConnection(conn);
+		    }
+			else{
+				pool.releaseConnection(conn);		
+				callback(err,results);
+			}
+			
+			});
+	});
+}
+
+exports.getMenuItems = function(callback){
+	var sql = 'select item_id,item_name from item';
+	pool.getConnection(function(err, conn) {
+		conn.query(sql,function(err,results){
+			
+			if (err) {
+		        console.log("ERROR: " + err.message);
+		        pool.releaseConnection(conn);
+		    }
+			else{
+				pool.releaseConnection(conn);		
+				callback(err,results);
+			}
+			
+			});
+	});
+}
+
 exports.addItem = function(itemName,price,categoryId,veg,itemDescription,callback) {
 	var query = "insert into item "
 			+ "(item_name,price,category_id,veg,item_description)"
