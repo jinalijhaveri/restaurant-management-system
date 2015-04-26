@@ -12,3 +12,57 @@ exports.getMenuByCategory = function(req,res){
 		res.send(rows);
 	});
 }
+
+exports.addMenuItem = function(req, res) {
+	var itemName = req.body.itemName;
+	var price = req.body.price;
+	var categoryId = req.body.categoryId;
+	var veg = req.body.veg;
+	var itemDescription = req.body.itemDescription;
+	
+	menu.addItem(itemName,price,categoryId,veg,itemDescription, function(err, rows) {
+		if (err) {
+			res.writeHead(400);
+			res.end("Error while inserting data\n");
+		} else {
+			console.log(rows);
+			res.end("Menu Item Inserted");
+		}
+	});
+};
+
+exports.updateMenuItem = function(req, res) {
+	var itemId = req.body.itemId;
+	var itemName = req.body.itemName;
+	var price = req.body.price;
+	var categoryId = req.body.categoryId;
+	var veg = req.body.veg;
+	var itemDescription = req.body.itemDescription;
+	console.log("Item Name_____" + itemName);
+	menu.updateItem(itemId,itemName,price,categoryId,veg,itemDescription, function(err, rows) {
+		if (err) {
+			res.writeHead(400);
+			res.end("Error while updating data\n");
+		} else {
+			console.log(rows);
+			res.end("Menu Item Updated");
+		}
+	});
+};
+
+exports.deleteMenuItem = function(req, res) {
+	var itemId = req.body.itemId;
+
+	console.log("Item Id_____" + itemId);
+	menu.deleteItem(itemId, function(err, rows) {
+		if (err) {
+			res.writeHead(400);
+			res.end("Error while Deleting data\n");
+		} else {
+			console.log(rows);
+			res.end("Item deleted");
+		}
+	});
+}
+
+

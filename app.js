@@ -38,14 +38,19 @@ app.get('/reservation',routes.showReservation);
 app.get('/blog',routes.showBlog);
 app.get('/adminHome',routes.showAdminHomePage);
 app.get('/createOrder',routes.showNewOrderPage);
+app.get('/addCategory',routes.showAddCategory);
+app.get('/addMenu',routes.showAddMenu);
+
 
 app.get('/categories',category.getCategories);
-app.get('/category/:categoryId',menu.getMenuByCategory);
 app.post('/categories',category.addNewCategory);
 app.put('/categories',category.updateCategory);
 app.post('/deleteCategory',category.deleteCategory);
-app.get('/addCategory',routes.showAddCategory);
-app.get('/addMenu',routes.showAddMenu);
+
+app.get('/category/:categoryId',menu.getMenuByCategory);
+app.post('/menuItem',menu.addMenuItem);
+app.put('/menuItem',menu.updateMenuItem);
+app.post('/deleteMenuItem',menu.deleteMenuItem);
 
 
 http.createServer(app).listen(app.get('port'), function(){
