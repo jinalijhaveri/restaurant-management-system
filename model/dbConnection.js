@@ -20,7 +20,6 @@ var connection;
 				  port : '3306',
 				  database : 'restaurantdb'
 				});
-			console.log("Pool_______"+pool);
 			return pool;
 		}
 	}
