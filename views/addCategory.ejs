@@ -78,25 +78,23 @@
 			
 			<div class="grid_8">
 				<h3 class="head3">Add category Form</h3>
-				<form id="form" action="/addInCategory">
+				<form method="post" action="/addNewCategory" >
 
-					<div class="success_wrapper">
-						<div class="success-message">Category added</div>
-					</div>
-					<label class="category_id"> <input type="text"
-						placeholder="Category Id:" data-constraints="@Required @JustNumbers" />
+					<label class="category_id"> 
+					<input type="text" name="category_id" placeholder="Category Id:" data-constraints="@Required @JustNumbers" />
 						<span class="empty-message">*This field is required.</span> 
 					</label>
-					<label class="category_name"> <input type="text" placeholder="Category Name:"
-						data-constraints="@Required @JustLetters" /> <span
-						class="empty-message">*This field is required.</span> 
+					<label class="category_name"> 
+					<input type="text" name="category_name" placeholder="Category Name:"data-constraints="@Required @JustLetters" /> 
+					<span class="empty-message">*This field is required.</span> 
 					</label> 
 										
 					<div>
 						<div class="clear"></div>
 						<div class="btns">
-							<a href="#" data-type="reset" class="btn">Clear</a> <a href="/blog"
-								data-type="submit" class="btn">Send</a>
+						
+							<input type="submit" name="submit" value="Save">
+						<!-- 	 	<a href="#" data-type="reset" class="btn">Clear</a>  <a href="/"data-type="submit" class="btn">Add</a>-->
 						</div>
 					</div>
 				</form>
