@@ -91,12 +91,16 @@
 						for(var i=0;i< itemList.length;i++){
 							url = '/showAdminEditMenu/'+itemList[i].item_id;
 							%>
-								<li id="item<%=i%>"><a  href="<%=url%>"><%=itemList[i].item_name%></a> <a onclick="deleteItem(<%=itemList[i].item_id%>,<%=i%>)">Delete</a></li>
+								<li id="item<%=i%>"><a  href="<%=url%>"><%=itemList[i].item_name%></a> <a href="#" onclick="deleteItem(<%=itemList[i].item_id%>,<%=i%>)">Delete</a></li>
 							<%
 						}
 					%>
 				
 				</ul>
+				
+				<div>
+				<a href="/addMenu" >Add Menu</button>
+				</div>
 			</div>
 			
 			
