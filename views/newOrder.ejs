@@ -89,13 +89,16 @@
 					<br> <input type="button" value="Add Item" id="addBtn"></input>
 
 					<br/>
-					<div id="row0">
-						<input type="text" placeholder="Menu Item" /> <input type="text"
-							placeholder="Price">
+					<div id="orderItems">
+					
 					</div>
 					<br>
 					<div>
-						<input type="button" value="Generate Bill"></input>
+						<input type="button" value="Generate Bill" onclick="generateBill()"></input>
+					</div>
+					<div id="totalBill" style="display:none">
+						<label>Total Bill : </label> <input type="text"  id="billAmount" disabled="disabled">
+						
 					</div>
 				</form>
 			</div>
@@ -121,10 +124,13 @@
 	</footer>
 	<script>
 		var i = 0;
+		var categoryList ="";
 
 		$(document)
 				.ready(
 						function() {
+							
+							getCategories();
 							$(".bt-menu-trigger").toggle(function() {
 								$('.bt-menu').addClass('bt-menu-open');
 							}, function() {
@@ -134,13 +140,93 @@
 							$("#addBtn")
 									.click(
 											function() {
-												i++;
+												getCategories();
+												
 												var row = "";
 												var rowId = "row" + i;
-												row += '<div id="'+rowId+'"><input type="text" placeholder="Menu Item"/> <input type="text" placeholder="Price"> </div><br>';
-												$("#row" + (i - 1)).after(row);
+												var catId = "catId"+i;
+												var itemId = "itemId"+i;
+												row += '<div id="'+rowId+'"> <select id="'+catId+'" onchange="getMenuItems()">'+categoryList+'</select> <select id="'+itemId+'">'+		
+						            '</select> <input type="text" placeholder="Price" disabled="disabled"> </div><br>';
+												if(i == 0){
+													console.log("Insert");
+													$("#orderItems").append(row);
+												}
+												else{
+													$("#row" + (i - 1)).after(row);
+												}
+												i++;
 											});
-						})
+							
+							
+						});
+		
+		function getCategories(){
+			var url = '/categories';
+	     	var catId;
+	     	var catName;
+	     	
+	     	$.get(url, function(catList) 
+	    	{
+	            var i;
+	            var list = '<option value="-1">Select Category</option>';
+	           	
+				for (i = 0; i < catList.length; ++i)
+				{
+				
+					catName = catList[i].category_name;
+					catId = catList[i].category_id;
+					
+	    			list = list + '<option value='+catId+'>'+catName+'</option>';
+				}
+	                 
+				categoryList = list;
+	             
+	         });
+		}
+		
+		function getMenuItems(){
+			console.log("Inside getMenuItems");
+			 $( "#itemId"+(i-1)).empty();   
+			var catId = $('#catId'+(i-1)).val();
+			
+			console.log("Category Id_______"+catId);
+			var url = '/category/'+catId;
+	     	var itemId;
+	     	var itemName;
+	     	var price;
+	     	
+	     	$.get(url, function(itemList) 
+	    	{
+	            var j;
+	            var list = '';
+	           	
+				for (j = 0; j < itemList.length; ++j)
+				{
+				
+					itemName = itemList[j].item_name;
+					itemId = itemList[j].item_id;
+					price = itemList[j].price;
+	    			list = list + '<option value='+price+'>'+itemName+"- $ "+price+'</option>';
+				}
+	            $( "#itemId"+(i - 1)).append(list);        
+	             
+	         });
+		}
+		
+		function generateBill(){
+			var j;
+			var sum = 0;
+			for(j=0;j<i;j++){
+				var itemPrice = parseFloat($('#itemId'+j).val());
+				sum += itemPrice;
+				
+			}
+			$("#totalBill").show();
+			$("#billAmount").val(sum);
+			console.log("Item Price________"+sum);
+		}
+	
 	</script>
 </body>
 </html>
