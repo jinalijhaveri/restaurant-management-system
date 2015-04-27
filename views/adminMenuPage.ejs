@@ -19,6 +19,14 @@
 			easingType : 'easeOutQuart'
 		});
 	})
+	
+	function deleteItem(itemId,i){
+		console.log("Item Id__"+itemId);
+		$.post('/deleteMenuItem',{ itemId: itemId},function(data){
+			console.log(data);
+			$("#item"+i).remove();
+		});
+	}
 </script>
 <!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
@@ -83,18 +91,11 @@
 						for(var i=0;i< itemList.length;i++){
 							url = '/showAdminEditMenu/'+itemList[i].item_id;
 							%>
-								<li><a href="<%=url%>"><%=itemList[i].item_name%></a></li>
+								<li id="item<%=i%>"><a  href="<%=url%>"><%=itemList[i].item_name%></a> <a onclick="deleteItem(<%=itemList[i].item_id%>,<%=i%>)">Delete</a></li>
 							<%
 						}
 					%>
-					<!--  <li><a href="#">Curabitur Vellore Sit</a></li>
-					<li><a href="#">Eu Consectetur Ligula</a></li>
-					<li><a href="#">Dui eros Laoreet Sit amet </a></li>
-					<li><a href="#">Estvel Dertolino</a></li>
-					<li><a href="#">Commodo Venenatis Erossce</a></li>
-					<li><a href="#">Adipiscing Quam id Risus </a></li>
-					<li><a href="#">Sagittis Consequat Lacus </a></li>
-					<li><a href="#">Onterdumoin ut </a></li>-->
+				
 				</ul>
 			</div>
 			
