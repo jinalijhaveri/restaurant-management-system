@@ -7,7 +7,7 @@ var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
-
+var index = require('./routes/index');
 var category = require('./routes/category');
 var menu = require('./routes/menu');
 
@@ -42,7 +42,8 @@ app.get('/addCategory',routes.showAddCategory);
 app.get('/addMenu',routes.showAddMenu);
 app.get('/showAdminMenu',menu.showAdminMenuPage);
 app.get('/showAdminEditMenu/:itemId',menu.showAdminEditMenuPage);
-
+app.post('/login1',routes.login1);
+app.get('/login',routes.login);
 
 app.get('/categories',category.getCategories);
 app.post('/categories',category.addNewCategory);
