@@ -62,6 +62,7 @@
      	var itemId;
      	var itemName;
      	var price;
+     	var image;
      	
      	$.get(prodCatURL, function(itemList) 
     	{
@@ -74,8 +75,10 @@
 				itemName = itemList[j].item_name;
 				itemId = itemList[j].item_id;
 				price = itemList[j].price;
+				image = "images/page3_img"+(j+1)+".jpg";
+				
     			
-    			list = list + '<div class="grid_3"><a href="images/big1.jpg" class="gal"><img src="images/page3_img1.jpg" alt=""><span></span></a>'+
+    			list = list + '<div class="grid_3"><a href="'+image+'" class="gal"><img src="'+image+'" alt=""><span></span></a>'+
 								'<div class="col2"><span class="col3"><a href="#">'+itemName+'</a></span> $ '+price+'</div></div>';
 			}
             $( "#tab-1").append(list);        
