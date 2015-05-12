@@ -56,7 +56,8 @@
 						<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
 						<ul>
 							<li class=" bt-icon "><a href="/adminHome">Home</a></li>
-							<li class="bt-icon"><a href="/showAdminMenu">Manage Menu Items</a></li>
+							<li class="bt-icon"><a href="/showAdminMenu">Manage Menu
+									Items</a></li>
 							<li class="bt-icon" style="margin-left: 82px;"><a
 								href="/addCategory">Manage Category</a></li>
 							<li class="current bt-icon" style="margin-left: -91px;"><a
@@ -80,27 +81,25 @@
 
 		<div class="container_12">
 			<div class="grid_12">
-				<h3 style="text-align: left; padding-top: 7px; font-size: 30px;">Create New
-					Order</h3>
+				<h3
+					style="text-align: left; padding-top: 7px; font-size: 30px; margin-bottom: 33px;">Create
+					New Order</h3>
 			</div>
 			<div
 				style="background-color: rgba(215, 215, 177, 0.45); border-radius: 5px;">
 				<form style="padding: 15px;">
-					<div>
-						<label>Table Number</label> <input type="text" />
-					</div>
-					<br> <input type="button" value="Add Item" id="addBtn"></input>
 
-					<br />
-					<div id="orderItems"></div>
+					<label>Table Number</label> <input type="text" /> <br>
+					 <input
+						type="button" value="Add Item" id="addBtn" style="margin-top:20px;"></input> <br />
+					<div id="orderItems" style="margin-top:20px;"></div>
 					<br>
 					<div>
-						<input type="button" value="Generate Bill"
+						<input type="button" value="Generate Bill" style="margin-bottom:10px;"
 							onclick="generateBill()"></input>
 					</div>
 					<div id="totalBill" style="display: none">
-						<label>Total Bill : </label> <input type="text" id="billAmount"
-							disabled="disabled">
+						<label>Total Bill Amount : </label> <label id="billAmount" style="font-weight:bold"></label>
 
 					</div>
 				</form>
@@ -147,7 +146,7 @@
 								var rowId = "row" + i;
 								var catId = "catId" + i;
 								var itemId = "itemId" + i;
-								row += '<div id="'+rowId+'"> <select id="'
+								row += '<div id="'+rowId+'" style="margin-top:10px;"> <select id="'
 										+ catId
 										+ '" onchange="getMenuItems()">'
 										+ categoryList
@@ -224,7 +223,7 @@
 
 			}
 			$("#totalBill").show();
-			$("#billAmount").val(sum);
+			$("#billAmount").append("$" + sum);
 			console.log("Item Price________" + sum);
 		}
 	</script>
