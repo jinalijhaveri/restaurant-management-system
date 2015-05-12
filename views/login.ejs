@@ -60,12 +60,12 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-offset-5 col-md-3">
-            <div class="form-login">
-            <h4>Admin Login.</h4>
+        <div class="col-md-offset-5 col-md-3"  style="background-color: rgba(215, 215, 177, 0.45); border-radius: 5px;">
+            <div class="form-login" style="margin:47px;">
+            <h4>Admin Login</h4>
             <form id="loginForm" method="post" action="/login1">
-            <p><input onfocus="this.value=''" id= "usname" name="usname" type="text" value="Email" /></p>
-            <p><input type="password" id= "pass" name="pass" value="" />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+            <p><input onfocus="this.value=''" id= "usname" name="usname" type="text" placeholder="Email" /></p>
+            <p><input type="password" id= "pass" name="pass" value="" placeholder="Password" />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
  <% if(title != '') {%>
         		<p style='color:red'><%= title %></p>
        		 <%}%>

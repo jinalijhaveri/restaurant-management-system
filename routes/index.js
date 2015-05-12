@@ -26,7 +26,7 @@ exports.login1 = function(req, res){
 	        	  //var result= rows[0].id;
 	            //  console.log(result);
 	        	  console.log("Query successful");
-	        	  res.render('menu',{title:''})
+	        	  res.render('adminHomePage');
 	        	  }
 	        	  else{
 	        		  console.log("Error login password dont match");
