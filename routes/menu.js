@@ -52,7 +52,10 @@ exports.updateMenuItem = function(req, res) {
 		} else {
 			console.log(rows);
 			console.log("Menu Item Updated");
-			res.render('adminMenuPage');
+			menu.getMenuItems(function(err,rows){
+				console.log("Items______"+rows);
+				res.render('adminMenuPage',{itemList:rows});
+			});
 		}
 	});
 };

@@ -13,8 +13,6 @@
 <script src="../js/jquery.ui.totop.js"></script>
 <script src="../js/TMForm.js"></script>
 <script src="../js/jquery.easing.1.3.js"></script>
-<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&amp;sensor=false"></script>
 <script>
 	$(document).ready(function() {
 
@@ -113,7 +111,7 @@
 					<input type="hidden" value="<%=item[0].item_id%>" name="itemId"/>
 					<div>
 						<label>Item Description</label>
-						<textarea rows="5" name="itemDescription" value="<%=item[0].item_description%>"></textarea>
+						<textarea rows="5" name="itemDescription"><%=item[0].item_description%></textarea>
 					</div>
 					<div>
 						<label>Item Price</label> <input type="number" name="price" value="<%=item[0].price%>"/>
