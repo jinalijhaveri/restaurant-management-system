@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>About</title>
+<title>Manage Menu Items</title>
 <meta charset="utf-8">
 <link rel="icon" href="images/favicon.ico">
 <link rel="shortcut icon" href="images/favicon.ico" />
@@ -60,12 +60,13 @@
 					<nav id="bt-menu" class="bt-menu">
 						<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
 						<ul>
-							<li class="bt-icon "><a href="/">Home</a></li>
-							<li class="current bt-icon"><a href="/aboutUs">About</a></li>
-							<li class="bt-icon"><a href="/menu">Menu</a></li>
-							<li class="bt-icon"><a href="/blog">Blog</a></li>
-							<li class="bt-icon"><a href="/reservation">Reservation</a></li>
-							<li class="bt-icon"><a href="/contacts">Contacts</a></li>
+							<li class="bt-icon "><a href="/adminHome">Home</a></li>
+							<li class="current bt-icon"><a href="/showAdminMenu">Manage Menu Items</a></li>
+							<li class="bt-icon" style="margin-left: 82px;"><a
+								href="/addCategory">Manage Category</a></li>
+							<li class="bt-icon" style="margin-left: -91px;"><a
+								href="/createOrder">Orders</a></li>
+							<li class="bt-icon"><a href="">Logout</a></li>
 						</ul>
 					</nav>
 
@@ -82,31 +83,35 @@
 		<div class="ic">More Website Templates @ TemplateMonster.com -
 			December 02, 2013!</div>
 		<div class="container_12">
-			
+
 			<div class="grid_4">
 				<h3>Menu Items</h3>
 				<ul class="list">
-					<%
-						var url;
-						for(var i=0;i< itemList.length;i++){
-							url = '/showAdminEditMenu/'+itemList[i].item_id;
-							%>
-								<li id="item<%=i%>"><a  href="<%=url%>"><%=itemList[i].item_name%></a> <a href="#" onclick="deleteItem(<%=itemList[i].item_id%>,<%=i%>)">Delete</a></li>
-							<%
-						}
-					%>
-				
+					<% var url; for(var i=0;i< itemList.length;i++){ url =
+					'/showAdminEditMenu/'+itemList[i].item_id; %>
+					<li id="item<%=i%>"><a href="<%=url%>"
+						style="font-weight: bold;"><%=itemList[i].item_name%></a> <a
+						href="#" onclick="deleteItem(<%=itemList[i].item_id%>,<%=i%>)">Delete</a></li>
+					<% } %>
+
 				</ul>
-				
-				<div>
-				<a href="/addMenu" >Add Menu</button>
+			</div>
+			<div class="grid_4">
+				<div
+					style="background-color: rgba(215, 215, 177, 0.45); border-radius: 5px; margin-top: 200px; padding: 20px;">
+					<p style="font-weight: bold; font-size: 20px;">Want to add more
+						Items?</p>
+
+					<p class="pad1"></p>
+
+					<div>
+						<a href="/addMenu">Add New Item</a>
+					</div>
 				</div>
 			</div>
-			
-			
-		
-			
 		</div>
+
+
 	</div>
 
 	<!--==============================footer=================================-->

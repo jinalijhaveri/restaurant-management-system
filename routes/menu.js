@@ -29,7 +29,10 @@ exports.addMenuItem = function(req, res) {
 		} else {
 			console.log(rows);
 			console.log("Menu Item Inserted");
-			res.render('adminHomePage');
+			menu.getMenuItems(function(err,rows){
+				console.log("Items______"+rows);
+				res.render('adminMenuPage',{itemList:rows});
+			});
 		}
 	});
 };
